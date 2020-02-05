@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from random import choice
 import re
+import requests
+import json
 
 scraped = open('nihilism.html')
 
@@ -78,11 +80,34 @@ def make_text(chains):
 
     return " ".join(words)
 
+def retrieve_an_catto():
+    """get a randomized cat picture from the cat api"""
 
-a_short_novel_nihilist_text = make_text(make_chains(summon_text(quote_mess)))
-print(a_short_novel_nihilist_text)
+    response = requests.get('https://api.thecatapi.com/v1/images/search')
+    response_json = json.loads(response.text)
+    catto_url = response_json[0]['url']
 
+    return catto_url
 
+def mr_sandman():
+    """mr sandman bring me a dream a nihilistic cat with ennui"""
+
+    print('your catto is at: ', retrieve_an_catto())
+    a_short_novel_nihilist_text = make_text(make_chains(summon_text(quote_mess)))
+    print(a_short_novel_nihilist_text)
+
+print('Hello and welcome to CHONKSPIRATION, a service to inspire you with CATTOS and ENNUI')
+print('Would you like to receive a nihilistic catto? [Y/N]')
+response = input('>>> ')
+if response[0].lower() == 'y':
+    print('Very good. Summoning your catto...')
+    print('...')
+    print('...')
+    print('...')
+    mr_sandman()
+else:
+    print('Well find then! Good day sir, I SAID good day sir!')
+    quit()
 
 # for future reference/next steps:
 
