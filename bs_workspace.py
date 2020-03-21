@@ -90,7 +90,7 @@ def retrieve_an_catto():
     return catto_url
 
 def mr_sandman():
-    """mr sandman bring me a dream a nihilistic cat with ennui"""
+    """mr sandman bring me a dream, send me a nihilistic cat with ennui"""
 
     print('your catto is at: ', retrieve_an_catto())
     a_short_novel_nihilist_text = make_text(make_chains(summon_text(quote_mess)))
