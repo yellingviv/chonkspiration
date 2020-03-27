@@ -1,5 +1,5 @@
 # select a parent image -- look for ubuntu
-FROM
+FROM ubuntu:latest
 
 # set working directory on image
 WORKDIR /usr/src/client
