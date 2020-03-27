@@ -1,0 +1,17 @@
+# select a parent image -- look for ubuntu
+FROM
+
+# set working directory on image
+WORKDIR /usr/src/client
+
+# copy the code to the current directory
+COPY . .
+
+# run commands to install virtual env, activate it, and install requirements
+RUN pip3 install python-virtualenv && virtualenv env && source env/bin/activate && pip3 install -r requirements.txt
+
+# tell the container to listen on the correct port
+EXPOSE 5005
+
+# activate the app within the container
+CMD ["python3", "server-summoning.py"]
